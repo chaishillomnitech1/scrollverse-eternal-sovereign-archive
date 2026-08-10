@@ -7,11 +7,19 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Shop from "./pages/Shop";
+import Leaderboard from "./pages/Leaderboard";
+import Monitor from "./pages/Monitor";
+import Legacy from "./pages/Legacy";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/shop"} component={Shop} />
+      <Route path={"/leaderboard"} component={Leaderboard} />
+      <Route path={"/monitor"} component={Monitor} />
+      <Route path={"/legacy"} component={Legacy} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
