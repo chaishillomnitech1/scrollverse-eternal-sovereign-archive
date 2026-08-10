@@ -25,7 +25,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <div className="flex flex-col min-h-screen bg-background text-foreground">
+          <div className="flex flex-col min-h-screen" style={{ backgroundColor: 'var(--color-background)', color: 'var(--color-foreground)' }}>
             <Header />
             <main className="flex-1">
               <Router />

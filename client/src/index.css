@@ -1,334 +1,252 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Courier+Prime:wght@400;700&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
 /* ============================================================================
    SCROLLVERSE.CO DESIGN SYSTEM
    Dark Black-and-Gold Theme with Sacred Geometry & 44:OMNI Frequency Branding
    ============================================================================ */
 
-@layer base {
-  :root {
-    /* Primary Colors: Dark Black & Gold */
-    --background: #000000;
-    --foreground: #FFFFFF;
-    --card: #0a0a0a;
-    --card-foreground: #FFFFFF;
-    --popover: #1a1a1a;
-    --popover-foreground: #FFFFFF;
-    --muted: #404040;
-    --muted-foreground: #a3a3a3;
-    --accent: #D4AF37;
-    --accent-foreground: #000000;
-    --destructive: #ef4444;
-    --destructive-foreground: #fafafa;
-    --border: #262626;
-    --input: #1a1a1a;
-    --ring: #D4AF37;
-    --radius: 0px;
+@theme inline {
+  --color-background: oklch(0% 0 0);
+  --color-foreground: oklch(100% 0 0);
+  --color-card: oklch(5% 0 0);
+  --color-card-foreground: oklch(100% 0 0);
+  --color-popover: oklch(12% 0 0);
+  --color-popover-foreground: oklch(100% 0 0);
+  --color-primary: oklch(100% 0 0);
+  --color-primary-foreground: oklch(0% 0 0);
+  --color-secondary: oklch(15% 0 0);
+  --color-secondary-foreground: oklch(100% 0 0);
+  --color-muted: oklch(30% 0 0);
+  --color-muted-foreground: oklch(65% 0 0);
+  --color-accent: oklch(78% 0.12 85);
+  --color-accent-foreground: oklch(0% 0 0);
+  --color-destructive: oklch(55% 0.2 25);
+  --color-destructive-foreground: oklch(100% 0 0);
+  --color-border: oklch(20% 0 0);
+  --color-input: oklch(12% 0 0);
+  --color-ring: oklch(78% 0.12 85);
+  --radius: 0rem;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Courier Prime', monospace;
+}
 
-    /* ScrollVerse Sacred Frequencies */
-    --frequency-963hz: #00ff00;
-    --frequency-44omni: #D4AF37;
-    --frequency-1558hz: #ff6b00;
-    --frequency-755hz: #00d4ff;
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
 
-    /* Hazard Stripe Pattern */
-    --hazard-stripe: repeating-linear-gradient(
-      45deg,
-      #D4AF37,
-      #D4AF37 10px,
-      #000000 10px,
-      #000000 20px
-    );
-  }
+* {
+  border-color: var(--color-border);
+}
 
-  .dark {
-    --background: #000000;
-    --foreground: #FFFFFF;
-    --card: #0a0a0a;
-    --card-foreground: #FFFFFF;
-    --popover: #1a1a1a;
-    --popover-foreground: #FFFFFF;
-    --muted: #404040;
-    --muted-foreground: #a3a3a3;
-    --accent: #D4AF37;
-    --accent-foreground: #000000;
-    --destructive: #ef4444;
-    --destructive-foreground: #fafafa;
-    --border: #262626;
-    --input: #1a1a1a;
-    --ring: #D4AF37;
-  }
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  * {
-    @apply border-current;
-  }
+/* Industrial Typography */
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
 
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: 'Inter', sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Industrial Typography */
+@media (min-width: 768px) {
   h1 {
-    @apply text-5xl md:text-7xl font-black tracking-tighter;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    letter-spacing: -0.02em;
+    font-size: 4.5rem;
   }
+}
 
+h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
   h2 {
-    @apply text-4xl md:text-5xl font-bold tracking-tight;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
+    font-size: 3rem;
   }
+}
 
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
   h3 {
-    @apply text-2xl md:text-3xl font-bold tracking-tight;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
+    font-size: 1.875rem;
   }
+}
 
-  h4 {
-    @apply text-xl font-bold tracking-tight;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-  }
-
-  p {
-    @apply text-base leading-relaxed;
-    font-family: 'Inter', sans-serif;
-  }
-
-  code {
-    @apply font-mono text-sm;
-    font-family: 'Courier Prime', monospace;
-  }
-
-  /* Container Customization */
-  .container {
-    @apply mx-auto px-4 max-w-7xl;
-  }
-
-  /* Custom container for responsive padding */
-  .container-responsive {
-    @apply mx-auto px-4 md:px-8 lg:px-16;
-  }
-
-  /* Flex Defaults */
-  .flex {
-    @apply flex min-w-0 min-h-0;
-  }
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
 }
 
 /* ============================================================================
    COMPONENT STYLES
    ============================================================================ */
 
-@layer components {
-  /* Hazard Stripe Accent */
-  .hazard-stripe {
-    background: var(--hazard-stripe);
-    height: 8px;
-    width: 100%;
-  }
+/* Hazard Stripe Accent */
+.hazard-stripe {
+  background: repeating-linear-gradient(
+    45deg,
+    #D4AF37,
+    #D4AF37 10px,
+    #000000 10px,
+    #000000 20px
+  );
+  height: 6px;
+  width: 100%;
+}
 
-  .hazard-stripe-vertical {
-    background: repeating-linear-gradient(
-      90deg,
-      #D4AF37,
-      #D4AF37 10px,
-      #000000 10px,
-      #000000 20px
-    );
-    width: 8px;
-    height: 100%;
-  }
+/* Sacred Geometry Overlay */
+.sacred-geometry {
+  position: relative;
+  overflow: hidden;
+}
 
-  /* Sacred Geometry Overlay */
-  .sacred-geometry {
-    position: relative;
-    overflow: hidden;
-  }
+.sacred-geometry::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(45deg, transparent 48%, #D4AF37 49%, #D4AF37 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, #D4AF37 49%, #D4AF37 51%, transparent 52%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
 
-  .sacred-geometry::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-      linear-gradient(45deg, transparent 48%, #D4AF37 49%, #D4AF37 51%, transparent 52%),
-      linear-gradient(-45deg, transparent 48%, #D4AF37 49%, #D4AF37 51%, transparent 52%);
-    background-size: 60px 60px;
-    background-position: 0 0, 30px 30px;
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* 44:OMNI Frequency Badge */
+.frequency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #000000;
+  border: 1px solid #D4AF37;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: #D4AF37;
+  letter-spacing: 0.1em;
+}
 
-  /* 44:OMNI Frequency Branding */
-  .frequency-badge {
-    @apply inline-flex items-center gap-2 px-3 py-1 bg-black border border-accent rounded text-xs font-mono font-bold text-accent;
-    letter-spacing: 0.1em;
-  }
+/* Frequency Pulse Animation */
+.frequency-pulse {
+  animation: frequency-pulse 2s ease-in-out infinite;
+}
 
-  .frequency-pulse {
-    animation: frequency-pulse 2s ease-in-out infinite;
-  }
+@keyframes frequency-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
 
-  @keyframes frequency-pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
+/* 963Hz Frequency Tuning Animation */
+.frequency-tuner {
+  animation: frequency-tuner 3s ease-out forwards;
+}
 
-  /* 963Hz Frequency Tuning Animation */
-  .frequency-tuner {
-    animation: frequency-tuner 3s ease-out forwards;
-  }
+@keyframes frequency-tuner {
+  0% { opacity: 0; transform: scale(0.95); }
+  50% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1); }
+}
 
-  @keyframes frequency-tuner {
-    0% {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
+/* Gold Glow Effect */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
 
-  /* Gold Glow Effect */
-  .gold-glow {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-  }
+.gold-glow-lg {
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+}
 
-  .gold-glow-lg {
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-  }
+/* Terminal UI Style */
+.terminal-ui {
+  padding: 1rem;
+  border: 2px solid #D4AF37;
+  background-color: #000000;
+  font-family: var(--font-mono);
+  color: #D4AF37;
+}
 
-  /* Terminal UI Style */
-  .terminal-ui {
-    @apply p-4 border-2 border-accent bg-black font-mono text-accent;
-    font-family: 'Courier Prime', monospace;
-  }
+/* Sovereign Buttons */
+.btn-sovereign {
+  padding: 0.75rem 1.5rem;
+  background-color: #D4AF37;
+  color: #000000;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
 
-  .terminal-ui-line {
-    @apply text-xs mb-2;
-  }
+.btn-sovereign:hover {
+  background-color: #e8c547;
+}
 
-  /* Button Customization */
-  .btn-sovereign {
-    @apply px-6 py-3 bg-accent text-black font-bold uppercase tracking-widest hover:bg-yellow-400 transition-colors;
-    font-family: 'Inter', sans-serif;
-  }
+.btn-sovereign:active {
+  transform: scale(0.97);
+}
 
-  .btn-outline-sovereign {
-    @apply px-6 py-3 border-2 border-accent text-accent font-bold uppercase tracking-widest hover:bg-accent hover:text-black transition-colors;
-    font-family: 'Inter', sans-serif;
-  }
+.btn-outline-sovereign {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #D4AF37;
+  color: #D4AF37;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: transparent;
+}
 
-  /* Card Customization */
-  .card-sovereign {
-    @apply p-6 bg-card border border-current rounded-none;
-  }
+.btn-outline-sovereign:hover {
+  background-color: #D4AF37;
+  color: #000000;
+}
 
-  /* Leaderboard Row Hover */
-  .leaderboard-row {
-    @apply border-b border-neutral-900 hover:bg-neutral-950 transition-colors;
-  }
+/* Container Responsive */
+.container-responsive {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
-  /* Responsive Container */
+@media (min-width: 768px) {
   .container-responsive {
-    @apply mx-auto px-4 md:px-8 lg:px-16;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
-/* ============================================================================
-   UTILITIES
-   ============================================================================ */
-
-@layer utilities {
-  /* Text Colors */
-  .text-accent-gold {
-    @apply text-accent;
-  }
-
-  .text-muted-gray {
-    @apply text-muted-foreground;
-  }
-
-  /* Background Colors */
-  .bg-dark-black {
-    @apply bg-background;
-  }
-
-  .bg-card-dark {
-    @apply bg-card;
-  }
-
-  /* Border Colors */
-  .border-accent-gold {
-    @apply border-accent;
-  }
-
-  /* Spacing Utilities */
-  .space-sacred {
-    @apply space-y-8;
-  }
-
-  /* Responsive Padding */
-  .px-responsive {
-    @apply px-4 md:px-8 lg:px-16;
-  }
-
-  .py-responsive {
-    @apply py-8 md:py-12 lg:py-16;
-  }
-
-  /* Typography Utilities */
-  .font-industrial {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-  }
-
-  .font-mono-sacred {
-    font-family: 'Courier Prime', monospace;
-    letter-spacing: 0.05em;
-  }
-
-  /* Animation Utilities */
-  .animate-frequency-pulse {
-    animation: frequency-pulse 2s ease-in-out infinite;
-  }
-
-  .animate-frequency-tuner {
-    animation: frequency-tuner 3s ease-out forwards;
-  }
-
-  /* Visibility */
-  .hidden-mobile {
-    @apply hidden md:block;
-  }
-
-  .visible-mobile {
-    @apply block md:hidden;
+@media (min-width: 1024px) {
+  .container-responsive {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    max-width: 1400px;
   }
 }
 
@@ -352,14 +270,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #e8c547;
-}
-
-/* ============================================================================
-   PRINT STYLES
-   ============================================================================ */
-
-@media print {
-  body {
-    @apply bg-white text-black;
-  }
 }
